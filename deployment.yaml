@@ -1,0 +1,19 @@
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: nodejs-todo-app
+spec:
+  selector:
+    matchLabels:
+      app: nodejs-todo-app
+  replicas: 2 # tells deployment to run 2 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: nodejs-todo-app
+    spec:
+      containers:
+      - name: node-todo-app
+        image: node-todo-app:v1
+        ports:
+        - containerPort: 3000
